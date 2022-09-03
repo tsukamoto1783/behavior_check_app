@@ -8,6 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      # .envファイルの作成
+      - name: create .env
+        run: |
+          touch .env
+          echo TEST_KEY=${{secrets.TEST_KEY}} >> .env
+          echo TEST_ID=${{secrets.TEST_ID}} >> .env
+
       # Flutter のインストール clone がはやい
       - name: Install Flutter
         run: git clone https://github.com/flutter/flutter.git
