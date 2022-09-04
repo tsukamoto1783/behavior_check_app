@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   // .envファイルの読み込み
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "env");
   runApp(const MyApp());
 }
 
