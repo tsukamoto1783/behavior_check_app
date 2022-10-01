@@ -6,6 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      # .envファイルの作成
+      - name: create env
+        run: |
+          touch env
+          echo TEST_KEY=${{secrets.TEST_KEY}} >> env
+
       # Flutter のインストール clone がはやい
       - name: Install Flutter
         run: git clone https://github.com/flutter/flutter.git
@@ -18,7 +25,7 @@ jobs:
       - name: Download Flutter packages
         run: flutter pub get
 
-      - run: flutte build web
+      - run: flutter build web
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
